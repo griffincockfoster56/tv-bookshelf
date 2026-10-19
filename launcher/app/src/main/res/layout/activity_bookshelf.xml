@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bookshelf home: brick wall and bookcase (painted in code), books added in code, the open book on the stage. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shelfRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF1A120C">
+
+    <ImageView
+        android:id="@+id/wall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:importantForAccessibility="no" />
+
+    <FrameLayout
+        android:id="@+id/books"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false" />
+
+    <!-- Brass plaque with the time. -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/brass_plaque"
+        android:elevation="6dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="7dp">
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="h:mm a"
+            android:format24Hour="HH:mm"
+            android:includeFontPadding="false"
+            android:textColor="#FF2A1B0C"
+            android:textSize="28sp"
+            android:fontFamily="@font/cinzel"
+            android:fontVariationSettings="'wght' 600"
+            android:shadowColor="#66FFF0C8"
+            android:shadowDy="1"
+            android:shadowRadius="0.01" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:format12Hour="@string/date_format"
+            android:format24Hour="@string/date_format"
+            android:textAllCaps="true"
+            android:textColor="#CC2A1B0C"
+            android:textSize="10sp"
+            android:fontFamily="@font/cinzel"
+            android:fontVariationSettings="'wght' 700"
+            android:letterSpacing="0.18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/topButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btnInputs"
+            style="@style/BrassTag"
+            android:text="@string/inputs"
+            android:drawableStart="@drawable/ic_input" />
+
+        <TextView
+            android:id="@+id/btnWifi"
+            style="@style/BrassTag"
+            android:text="@string/wifi"
+            android:drawableStart="@drawable/ic_wifi" />
+
+        <TextView
+            android:id="@+id/btnSettings"
+            style="@style/BrassTag"
+            android:text="@string/settings"
+            android:drawableStart="@drawable/ic_settings" />
+    </LinearLayout>
+
+    <!-- The open book and its dimmed backdrop live here while a book is out. -->
+    <FrameLayout
+        android:id="@+id/stage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="24dp"
+        android:clipChildren="false"
+        android:visibility="gone" />
+</FrameLayout>

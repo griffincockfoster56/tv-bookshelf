@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brass tag buttons; focused tags are polished bright with a pale gold rim. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <gradient android:angle="270" android:startColor="#FFFBEAB4" android:centerColor="#FFDDB866" android:endColor="#FFAC8538" />
+            <stroke android:width="2dp" android:color="#FFFFF4CF" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:angle="270" android:startColor="#FFCDA960" android:centerColor="#FF9E7835" android:endColor="#FF765620" />
+            <stroke android:width="1dp" android:color="#FF4A3410" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+</selector>

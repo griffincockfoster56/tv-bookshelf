@@ -16,8 +16,31 @@
         android:theme="@style/Theme.TvHome"
         android:allowBackup="false">
 
+        <!-- The original Apple TV-style grid home from tv-vibehack (here with a pink highlight), kept but
+             switched off in favour of the bookshelf. To switch back:
+             adb shell pm enable com.gathin.tvhome/.MainActivity
+             adb shell pm disable com.gathin.tvhome/.BookshelfActivity
+             adb shell cmd package set-home-activity com.gathin.tvhome/.MainActivity -->
         <activity
             android:name=".MainActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Bookshelf home: brick wall, walnut bookcase, every app a leather-bound volume. -->
+        <activity
+            android:name=".BookshelfActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:stateNotNeeded="true"
