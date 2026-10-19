@@ -1,4 +1,79 @@
-# tv-vibehack
+# tv-bookshelf
+
+**My TV's home screen, as a bookshelf.**
+
+A home screen for Android TV that turns your apps into leather-bound books on a walnut
+bookcase, set against a brick wall like the one in my 1920s New York townhouse. Each app sits
+among classics, from *Pride and Prejudice* and *War and Peace* to *Beloved* and *Infinite Jest*.
+Select a book and press OK: it slides off the shelf, turns to show its gilt cover, swings open,
+riffles its pages and prints its title page. Press OK again to open the app.
+
+![The book opening on the TV](docs/bookshelf-opening.gif)
+
+▶︎ [Full video from the TV, 16 s](media/bookshelf_tv.mp4)
+
+> **Built on [tv-vibehack](https://github.com/Gathin23/tv-vibehack) by
+> [Gathin](https://github.com/Gathin23).** This repo is a fork. The debloat tooling, the prompt,
+> the ADB scripts and the original launcher are theirs, and their README follows below
+> (only the licence note is extended to cover the new fonts). If you want a clean, ad-free Android TV, start there; this fork adds a bookshelf on
+> top. MIT licence, as upstream.
+
+| On the shelf | Opened |
+|---|---|
+| ![The bookshelf home screen](docs/bookshelf-shelf.jpg) | ![An opened book: plate and title page](docs/bookshelf-open.jpg) |
+
+## What this fork adds
+
+- **The bookshelf home screen** (`BookshelfActivity`), now the default. It's all native Android
+  views with no game engine, so it runs on a modest TV:
+  - Every installed app becomes a volume, with leather dyed from the app's own brand colour,
+    raised bands, a morocco title label and gold lettering.
+  - Your favourite apps go at eye level, in your order. Other apps are spread among classic
+    works by women and men alike, plus a run of green *Encyclopaedia Britannica* volumes.
+  - The book opens in 3D in about two seconds. Each app gets its own title page, set in Cinzel
+    and EB Garamond with a tagline ("Being a Compendium of Films & Serials").
+  - Brass tags open Inputs, Wi-Fi and Settings, and a brass plaque shows the time.
+- **Tuned for a slow TV graphics chip.** Every spine and page is painted once into a bitmap,
+  so the GPU only composites. On a Sony BRAVIA (MediaTek) the opening runs near 60 fps.
+- **A debloat list for the Sony BRAVIA 4K UR2**, in
+  [`examples/sony-bravia-4k-ur2/`](examples/sony-bravia-4k-ur2/), with an adb-based restore
+  script.
+- **Small changes to the original grid launcher**, which is still included but switched off: a
+  pink focus highlight, instant movement with no springs, and the Inputs menu moved into a shared
+  class.
+
+## Make it yours
+
+Everything is in [`launcher/app/src/main/res/values/config.xml`](launcher/app/src/main/res/values/config.xml):
+
+- `dock_apps`: the apps at eye level, in order.
+- `shelf_end_apps`: apps placed at the end of the bottom shelf, in order.
+- `hidden_apps`: apps that never get a book.
+
+The classics are in `Book.java` and the app taglines are in its `TAGLINES` map. The brick and
+the bookcase are painted in `WallPainter.java`.
+
+Build and install with the original instructions below:
+`TV_HOST=<tv ip> launcher/build-and-install.sh`. It needs JDK 17. The script sets the
+bookshelf as home. To go back to the original grid, see the comment above `MainActivity` in
+`AndroidManifest.xml`.
+
+**On a Sony**, `tools/tv.py` can time out while the stock `adb` server holds the connection. Plain
+`adb` works:
+
+```bash
+adb connect <tv ip>:5555
+adb install -r launcher/app/build/outputs/apk/debug/app-debug.apk
+adb shell cmd package set-home-activity --user 0 com.gathin.tvhome/.BookshelfActivity
+```
+
+Made with Claude Code, talking to the real TV over Wi-Fi, the same way as the original.
+
+---
+
+# The original project: tv-vibehack
+
+*From [Gathin23/tv-vibehack](https://github.com/Gathin23/tv-vibehack). Only the licence note at the end is extended.*
 
 **Your TV, minus the ads.**
 
@@ -256,4 +331,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the format and the testing we ask for
 ## Licence
 
 MIT, see [`LICENSE`](LICENSE). The Outfit typeface is under the SIL Open Font License, see
-`launcher/FONT-LICENSE-OFL.txt`.
+`launcher/FONT-LICENSE-OFL.txt`. The bookshelf's Cinzel and EB Garamond typefaces are under the
+same licence, see `launcher/FONT-LICENSE-OFL-cinzel.txt` and `launcher/FONT-LICENSE-OFL-ebgaramond.txt`.
