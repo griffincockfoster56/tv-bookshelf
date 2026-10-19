@@ -12,8 +12,8 @@ riffles its pages and prints its title page. Press OK again to open the app.
 
 ▶︎ [Full video from the TV, 16 s](media/bookshelf_tv.mp4)
 
-> **Built on [tv-vibehack](https://github.com/Gathin23/tv-vibehack) by
-> [Gathin](https://github.com/Gathin23).** This repo is a fork. The debloat tooling, the prompt,
+> **Built on [CleanYourTV](https://github.com/Gathin23/cleanyourtv) (formerly tv-vibehack) by
+> [Gathin](https://github.com/Gathin23), [cleanyour.tv](https://cleanyour.tv).** This repo is a fork. The debloat tooling, the prompt,
 > the ADB scripts and the original launcher are theirs, and their README follows below
 > (only the licence note is extended to cover the new fonts). If you want a clean, ad-free Android TV, start there; this fork adds a bookshelf on
 > top. MIT licence, as upstream.
@@ -73,7 +73,10 @@ Made with Claude Code, talking to the real TV over Wi-Fi, the same way as the or
 
 # The original project: tv-vibehack
 
-*From [Gathin23/tv-vibehack](https://github.com/Gathin23/tv-vibehack). Only the licence note at the end is extended.*
+*The README of [Gathin23/tv-vibehack](https://github.com/Gathin23/cleanyourtv) as of the version
+this fork is based on. The project has since been renamed CleanYourTV and has moved on, with
+many more TVs and launcher features: see [the current version](https://github.com/Gathin23/cleanyourtv).
+Only the licence note at the end is extended.*
 
 **Your TV, minus the ads.**
 
