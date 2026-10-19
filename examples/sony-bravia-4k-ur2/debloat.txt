@@ -1,0 +1,45 @@
+# Sony BRAVIA 4K UR2 (BRAVIA_UR2_4K_UC), Android TV 10, US, firmware QTG3.200305.006.S97
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/sony-bravia-4k-ur2/debloat.txt
+# Undo:    TV_HOST=<tv ip> examples/sony-bravia-4k-ur2/restore.sh
+# Everything is DISABLED, not uninstalled. Comment out any line you want to keep.
+# Kept on purpose: Chromecast, AirPlay, screen mirroring and firmware updates.
+# Also disable com.google.android.tvlauncher, but only after the new launcher is installed.
+
+# Telemetry and ad tracking
+tv.samba.ssm                            # Samba TV: on-screen content recognition (ACR) for ads
+com.sonyericsson.idd.agent              # Sony usage-data agent
+com.sony.dtv.sonybugreportsys           # Sony bug reports
+com.google.android.tv.bugreportsender   # Google bug reports
+com.google.android.feedback             # Google feedback
+
+# Promotions and recommendation rows
+com.sony.dtv.promos                     # Sony promotions
+com.sony.dtv.sonyselect                 # "Sony Select" app row
+com.google.android.tvrecommendations    # home screen recommendation rows
+
+# Retail demo mode
+com.sony.dtv.demosupport
+com.sony.dtv.demosystemsupport
+com.sony.dtv.multiscreendemo
+
+# Voice assistants and ambient mode (owner opted out)
+com.google.android.katniss              # Google Assistant / voice search
+com.google.android.tv.assistant         # Google Assistant
+com.sony.dtv.seeds.iot                  # Alexa / smart speaker control
+com.sony.dtv.livingfit                  # Sony ambient mode screensaver
+
+# Preloaded apps not used
+com.google.android.videos               # Google Play Movies (discontinued)
+com.google.android.play.games           # Google Play Games
+com.google.android.youtube.tvmusic      # YouTube Music
+com.hbo.hbonow                          # old HBO Max app (Max is com.wbd.stream)
+com.cbs.ott                             # Paramount+
+com.crunchyroll.crunchyroid
+com.espn.score_center
+com.directv.sundayticket
+com.cnn.mobile.android.tv
+air.com.vudu.air.DownloaderTablet       # Vudu / Fandango at Home
+com.fandango.fandangonow.android.tv
+com.crackle.androidtv
+com.tcl.browser
